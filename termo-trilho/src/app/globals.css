@@ -145,9 +145,9 @@
   .welcome-text p {
     font-size: 1.25rem;
   }
-
+  
   /* Dashboard Styles */
-.app-container {
+  .app-container {
     display: flex;
     height: 100vh;
   }
@@ -337,7 +337,7 @@
   }
   
   /* Line Pages Styles */
-.linha-content {
+  .linha-content {
     display: flex;
     flex-direction: column;
     height: 210%;
@@ -673,3 +673,479 @@
     padding: 0.5rem;
     font-size: 1rem;
   }
+  
+  /* ===== RESPONSIVE STYLES ===== */
+  
+  /* Laptop (1366 x 768) */
+  @media screen and (max-width: 1366px) {
+    /* Login Page */
+    .brand-container {
+      display: flex;
+      width: 50%;
+    }
+  
+    .brand-logo h2 {
+      font-size: 3.25rem;
+    }
+  
+    .welcome-text h3 {
+      font-size: 2rem;
+    }
+  
+    /* Dashboard */
+    .welcome-box {
+      max-width: 28rem;
+      margin-top: 4rem;
+    }
+  
+    .action-buttons {
+      left: 20%;
+    }
+  
+    .action-button {
+      padding: 0.875rem 2.5rem;
+      font-size: 1.125rem;
+    }
+  
+    /* Line Pages */
+    .stations-container {
+      min-height: 1000px;
+    }
+  
+    .station {
+      margin: 0.75rem 0;
+    }
+  }
+  
+  /* Tablet (834 x 1194) */
+  @media screen and (max-width: 834px) {
+    /* Login Page */
+    .login-container {
+      flex-direction: column-reverse;
+    }
+  
+    .login-form-container {
+      width: 100%;
+      padding: 1.5rem;
+    }
+  
+    .brand-container {
+      width: 100%;
+      padding: 2rem 1rem;
+      min-height: 40vh;
+    }
+  
+    .brand-logo {
+      margin-bottom: 2rem;
+    }
+  
+    .brand-logo h2 {
+      font-size: 2.75rem;
+    }
+  
+    .welcome-text h3 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+    }
+  
+    .welcome-text p {
+      font-size: 1.125rem;
+    }
+  
+    /* Dashboard */
+    .sidebar {
+      width: 12rem;
+    }
+  
+    .sidebar-logo .logo-text {
+      font-size: 1.5rem;
+    }
+  
+    .nav-item {
+      padding: 0.875rem;
+      font-size: 1rem;
+    }
+  
+    .welcome-box {
+      max-width: 90%;
+      margin-top: 2rem;
+      padding: 1.5rem;
+    }
+  
+    .welcome-box h1 {
+      font-size: 1.5rem;
+    }
+  
+    .welcome-box p {
+      font-size: 1rem;
+    }
+  
+    .action-buttons {
+      position: relative;
+      left: auto;
+      bottom: auto;
+      margin: 2rem auto;
+      z-index: 10;
+    }
+  
+    .action-button {
+      padding: 0.75rem 2rem;
+      font-size: 1rem;
+    }
+  
+    .train-container {
+      width: 100%;
+      height: 50%;
+    }
+  
+    /* Line Pages */
+    .train-line-container {
+      padding: 1rem;
+    }
+  
+    .station-name {
+      width: 8rem;
+      font-size: 0.75rem;
+    }
+  
+    .station-spacer {
+      width: 8rem;
+    }
+  
+    .station-dot {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  
+    .maintenance-button {
+      font-size: 1rem;
+      padding: 0.75rem 2rem;
+    }
+  
+    /* Modal */
+    .modal {
+      max-width: 90%;
+      padding: 1.25rem;
+    }
+  
+    .form-label {
+      font-size: 1rem;
+    }
+  }
+  
+  /* Mobile (700 x 1186) */
+  @media screen and (max-width: 700px) {
+    /* Login Page */
+    .login-form h1 {
+      font-size: 1.75rem;
+    }
+  
+    .brand-container {
+      min-height: 30vh;
+    }
+  
+    .brand-logo h2 {
+      font-size: 2.25rem;
+    }
+  
+    .welcome-text h3 {
+      font-size: 1.5rem;
+    }
+  
+    /* Dashboard */
+    .app-container {
+      flex-direction: column;
+    }
+  
+    .sidebar {
+      width: 100%;
+      height: auto;
+      flex-direction: column;
+    }
+  
+    .sidebar-logo {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  
+    .nav-menu {
+      flex-direction: row;
+      overflow-x: auto;
+      padding: 0.5rem;
+    }
+  
+    .nav-item {
+      white-space: nowrap;
+      padding: 0.75rem;
+      font-size: 0.875rem;
+    }
+  
+    .sidebar-footer {
+      display: flex;
+      justify-content: space-around;
+    }
+  
+    .main-content {
+      height: calc(100vh - 150px);
+    }
+  
+    .welcome-box {
+      margin-top: 1.5rem;
+      padding: 1.25rem;
+    }
+  
+    .welcome-box h1 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+  
+    .welcome-box p {
+      font-size: 0.875rem;
+    }
+  
+    .action-buttons {
+      flex-direction: column;
+      gap: 1rem;
+      margin: 1.5rem auto;
+    }
+  
+    .train-container {
+      display: none;
+    }
+  
+    /* Line Pages */
+    .linha-content {
+      height: calc(100vh - 150px);
+    }
+  
+    .station-name {
+      width: 6rem;
+      font-size: 0.75rem;
+    }
+  
+    .station-spacer {
+      width: 6rem;
+    }
+  
+    .station-dot {
+      width: 1.25rem;
+      height: 1.25rem;
+    }
+  
+    .maintenance-button-container {
+      padding: 1rem;
+    }
+  
+    .maintenance-button {
+      font-size: 0.875rem;
+      padding: 0.75rem 1.5rem;
+    }
+  
+    /* Modal */
+    .modal {
+      padding: 1rem;
+    }
+  
+    .modal-title {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+  
+    .form-label {
+      font-size: 0.875rem;
+    }
+  
+    .form-select-small {
+      width: 8rem;
+    }
+  
+    .btn-blue {
+      padding: 0.5rem 1.5rem;
+      font-size: 0.875rem;
+    }
+  }
+  
+  /* Responsive adjustments for the table */
+  @media screen and (max-width: 1024px) {
+    .historico-content {
+      padding: 1rem;
+    }
+  
+    .maintenance-table th,
+    .maintenance-table td {
+      padding: 0.75rem 0.5rem;
+      font-size: 0.875rem;
+    }
+  
+    .delete-button {
+      padding: 0.4rem 0.75rem;
+      font-size: 0.75rem;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .historico-container {
+      padding: 1rem;
+    }
+  
+    .historico-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+  
+    .maintenance-table {
+      font-size: 0.75rem;
+    }
+  }
+  
+  @media screen and (max-width: 640px) {
+    .table-container {
+      overflow-x: scroll;
+    }
+  
+    .maintenance-table {
+      min-width: 600px;
+    }
+  }
+  
+  /* Alertas Page Styles */
+  .alertas-content {
+    background-color: #042841;
+    padding: 2rem;
+    overflow-y: auto;
+  }
+  
+  .alertas-container {
+    background-color: white;
+    border-radius: 0.25rem;
+    padding: 1.5rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .alertas-title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 1.5rem;
+  }
+  
+  .alertas-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .alertas-table th {
+    text-align: left;
+    padding: 0.75rem 1rem;
+    border-bottom: 2px solid #e5e7eb;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .alertas-table td {
+    padding: 1rem;
+    border-bottom: 1px solid #e5e7eb;
+    color: #333;
+  }
+  
+  .alertas-table tr:last-child td {
+    border-bottom: none;
+  }
+  
+  .complete-button {
+    background-color: #22c55e;
+    color: white;
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .complete-button:hover {
+    background-color: #16a34a;
+  }
+  
+  /* Responsive adjustments for the alertas table */
+  @media screen and (max-width: 1024px) {
+    .alertas-content {
+      padding: 1rem;
+    }
+  
+    .alertas-table th,
+    .alertas-table td {
+      padding: 0.75rem 0.5rem;
+      font-size: 0.875rem;
+    }
+  
+    .complete-button {
+      padding: 0.4rem 0.75rem;
+      font-size: 0.75rem;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .alertas-container {
+      padding: 1rem;
+    }
+  
+    .alertas-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+  
+    .alertas-table {
+      font-size: 0.75rem;
+    }
+  }
+  
+  @media screen and (max-width: 640px) {
+    .alertas-table {
+      min-width: 600px;
+    }
+  }
+  
+  /* Add these styles to the existing CSS file */
+  
+  /* Status badge styles for the history page */
+  .status-badge {
+    display: inline-block;
+    padding: 0.25rem 0.5rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+  }
+  
+  .status-badge.active {
+    background-color: #fef3c7;
+    color: #92400e;
+  }
+  
+  .status-badge.completed {
+    background-color: #d1fae5;
+    color: #065f46;
+  }
+  
+  /* Add this new animation for flashing status dots */
+  @keyframes flash-red {
+    0%,
+    100% {
+      background-color: #ef4444;
+      box-shadow: 0 0 5px #ef4444;
+    }
+    50% {
+      background-color: #b91c1c;
+      box-shadow: 0 0 10px #ef4444;
+    }
+  }
+  
+  /* Add this new class for flashing status dots */
+  .status-dot.alert-active {
+    background-color: #ef4444;
+    animation: flash-red 1.5s infinite;
+  }
+  
