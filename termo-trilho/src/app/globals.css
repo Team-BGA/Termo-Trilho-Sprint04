@@ -145,3 +145,194 @@
   .welcome-text p {
     font-size: 1.25rem;
   }
+
+  /* Dashboard Styles */
+.app-container {
+    display: flex;
+    height: 100vh;
+  }
+  
+  .sidebar {
+    width: 15rem;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .sidebar-logo {
+    padding: 1rem;
+    border-bottom: 1px solid #f3f4f6;
+  }
+  
+  .sidebar-logo .logo-text {
+    font-size: 1.875rem;
+    font-weight: 700;
+  }
+  
+  .nav-menu {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .nav-item {
+    padding: 1rem;
+    text-align: left;
+    font-size: 1.125rem;
+    font-weight: 500;
+    color: #6b7280;
+  }
+  
+  .nav-item:hover {
+    background-color: #f3f4f6;
+  }
+  
+  .nav-item.active {
+    background-color: #042841;
+    color: white;
+  }
+  
+  .nav-item-with-icon {
+    display: flex;
+    align-items: center;
+  }
+  
+  .status-dot {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    margin-right: 0.75rem;
+  }
+  
+  .status-dot.green {
+    background-color: #9ca3af; /* Changed from #4ade80 to match the gray line in Linha 8 */
+  }
+  
+  .status-dot.teal {
+    background-color: #2dd4bf; /* New class for teal dots in Linha 9 */
+  }
+  
+  .status-dot.red {
+    background-color: #9ca3af; /* Keeping this for reference but we'll replace its usage */
+  }
+  
+  .sidebar-footer {
+    border-top: 1px solid #f3f4f6;
+  }
+  
+  .footer-item {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    color: #6b7280;
+  }
+  
+  .footer-item:hover {
+    background-color: #f3f4f6;
+  }
+  
+  .footer-icon {
+    margin-right: 0.75rem;
+  }
+  
+  .main-content {
+    flex: 1;
+    background-color: #042841;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .welcome-box {
+    max-width: 32rem;
+    margin: 6rem auto 0;
+    background-color: #083859;
+    color: white;
+    padding: 2rem;
+    border-radius: 0.125rem;
+  }
+  
+  .welcome-box h1 {
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  
+  .welcome-box p {
+    font-size: 1.25rem;
+    text-align: center;
+  }
+  
+  .action-buttons {
+    position: absolute;
+    z-index: 10;
+    left: 38%;
+    bottom: 53%;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  
+  .action-button {
+    background-color: #083859;
+    color: white;
+    font-size: 1.25rem;
+    font-weight: 500;
+    padding: 1rem 3rem;
+    border-radius: 0.375rem;
+    transition: background-color 0.3s;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .action-button:hover {
+    background-color: #0a4a75;
+  }
+  
+  .train-container {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 66.666667%;
+    height: 66.666667%;
+  }
+  
+  .train-bg-white {
+    position: absolute;
+    inset: 0;
+    background-color: white;
+    border-top-left-radius: 100%;
+  }
+  
+  .train-bg-blue {
+    position: absolute;
+    inset: 0;
+    background-color: #3b82f6;
+    border-top-left-radius: 100%;
+    transform: scale(0.95);
+    transform-origin: bottom right;
+  }
+  
+  .welcome-overlay {
+    position: absolute;
+    top: 25%;
+    left: 25%;
+    z-index: 20;
+  }
+  
+  .welcome-overlay h2 {
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: white;
+  }
+  
+  .train-image {
+    position: absolute;
+    bottom: 0;
+    right: -9%;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transform: translate(1rem, 1rem);
+  }
+  
