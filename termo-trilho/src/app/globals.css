@@ -340,14 +340,14 @@ a {
 .linha-content {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 180%;
 }
 
 .train-line-container {
   flex: 1;
   overflow-y: auto;
   position: relative;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .vertical-line {
@@ -772,6 +772,8 @@ input.form-select {
   .station {
     margin: 0.75rem 0;
   }
+
+  
 }
 
 /* Tablet (834 x 1194) */
