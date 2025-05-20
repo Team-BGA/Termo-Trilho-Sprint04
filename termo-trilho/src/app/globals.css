@@ -1,1151 +1,1207 @@
-/* Reset and base styles */
+/* Reset e estilos base */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    /* We'll set the font in layout.tsx using next/font */
-    font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* Vamos definir a fonte em layout.tsx usando next/font */
+  font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Estilos da Página de Login */
+.login-container {
+  display: flex;
+  height: 100vh;
+}
+
+.login-form-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.login-form {
+  width: 100%;
+  max-width: 28rem;
+}
+
+.login-form h1 {
+  color: #042841;
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.login-form p {
+  color: #000000;
+  margin-bottom: 2rem;
+}
+
+.input-group {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.input-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #6b7280;
+  pointer-events: none;
+}
+
+.input-field {
+  background-color: rgba(209, 209, 209, 0.2);
+  border: 1px solid #d1d1d1;
+  color: #111827;
+  font-size: 0.875rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+}
+
+.forgot-password {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.forgot-password a {
+  color: #0c5c62;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
+
+.btn-primary {
+  width: 100%;
+  background-color: #083859;
+  color: white;
+  font-weight: 500;
+  border-radius: 9999px;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #042841;
+}
+
+.brand-container {
+  display: none;
+  background-color: #042841;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  color: white;
+}
+
+.brand-logo {
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.brand-logo h2 {
+  font-size: 3.75rem;
+  font-weight: 700;
+}
+
+.blue-text {
+  color: #3b82f6;
+}
+
+.gray-text {
+  color: #d1d1d1;
+}
+
+.welcome-text {
+  text-align: center;
+  max-width: 28rem;
+}
+
+.welcome-text h3 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.welcome-text p {
+  font-size: 1.25rem;
+}
+
+/* Estilos do Dashboard */
+.app-container {
+  display: flex;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 15rem;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar-logo {
+  padding: 1rem;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.sidebar-logo .logo-text {
+  font-size: 1.875rem;
+  font-weight: 700;
+}
+
+.nav-menu {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-item {
+  padding: 1rem;
+  text-align: left;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.nav-item:hover {
+  background-color: #f3f4f6;
+}
+
+.nav-item.active {
+  background-color: #042841;
+  color: white;
+}
+
+.nav-item-with-icon {
+  display: flex;
+  align-items: center;
+}
+
+.status-dot {
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  margin-right: 0.75rem;
+}
+
+.status-dot.green {
+  background-color: #9ca3af; /* Alterado de #4ade80 para corresponder à linha cinza na Linha 8 */
+}
+
+.status-dot.teal {
+  background-color: #2dd4bf; /* Nova classe para pontos turquesa na Linha 9 */
+}
+
+.status-dot.red {
+  background-color: #9ca3af; /* Mantendo isso para referência, mas substituiremos seu uso */
+}
+
+.sidebar-footer {
+  border-top: 1px solid #f3f4f6;
+}
+
+.footer-item {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  color: #6b7280;
+}
+
+.footer-item:hover {
+  background-color: #f3f4f6;
+}
+
+.footer-icon {
+  margin-right: 0.75rem;
+}
+
+.main-content {
+  flex: 1;
+  background-color: #042841;
+  position: relative;
+  overflow: hidden;
+}
+
+.welcome-box {
+  max-width: 32rem;
+  margin: 6rem auto 0;
+  background-color: #083859;
+  color: white;
+  padding: 2rem;
+  border-radius: 0.125rem;
+}
+
+.welcome-box h1 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.welcome-box p {
+  font-size: 1.25rem;
+  text-align: center;
+}
+
+.action-buttons {
+  position: absolute;
+  z-index: 10;
+  left: 38%;
+  bottom: 53%;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.action-button {
+  background-color: #083859;
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 500;
+  padding: 1rem 3rem;
+  border-radius: 0.375rem;
+  transition: background-color 0.3s;
+  border: none;
+  cursor: pointer;
+}
+
+.action-button:hover {
+  background-color: #0a4a75;
+}
+
+.train-container {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 66.666667%;
+  height: 66.666667%;
+}
+
+.train-bg-white {
+  position: absolute;
+  inset: 0;
+  background-color: white;
+  border-top-left-radius: 100%;
+}
+
+.train-bg-blue {
+  position: absolute;
+  inset: 0;
+  background-color: #3b82f6;
+  border-top-left-radius: 100%;
+  transform: scale(0.95);
+  transform-origin: bottom right;
+}
+
+.welcome-overlay {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  z-index: 20;
+}
+
+.welcome-overlay h2 {
+  font-size: 2.25rem;
+  font-weight: 700;
+  color: white;
+}
+
+.train-image {
+  position: absolute;
+  bottom: 0;
+  right: -10%;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: translate(1rem, 1rem);
+}
+
+/* Estilos das Páginas de Linha */
+.linha-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.train-line-container {
+  flex: 1;
+  overflow-y: auto;
+  position: relative;
+  padding: 2rem;
+}
+
+.vertical-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1rem;
+  transform: translateX(-50%);
+  border-radius: 9999px;
+  z-index: 5;
+}
+
+.vertical-line.gray {
+  background-color: #9ca3af;
+}
+
+.vertical-line.teal {
+  background-color: #2dd4bf;
+}
+
+.stations-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 1200px;
+  padding: 2rem 0;
+  z-index: 10;
+  margin: 0 auto;
+}
+
+.station {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem 0;
+  position: relative;
+  width: 100%;
+}
+
+.station-name {
+  color: white;
+  font-size: 0.875rem;
+  text-align: right;
+  width: 10rem;
+  margin-right: 1rem;
+}
+
+.station-id {
+  display: block;
+  font-size: 0.75rem;
+  color: #d1d1d1;
+  margin-bottom: 0.25rem;
+}
+
+.station-dot {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: #d1d1d1;
+  position: relative;
+  z-index: 10;
+}
+
+.station-dot.connected {
+  background-color: #ef4444;
+}
+
+/* Adicione estas novas classes para as estações conectadas turquesa na Linha 9 */
+/* Remova estas classes não utilizadas */
+
+/* Adicione estes estilos para estações com alerta */
+.station-dot.alerted {
+  background-color: #ef4444; /* Cor vermelha para alertas */
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
   }
-  
-  body {
-    background-color: #ffffff;
-    color: #000000;
+  70% {
+    box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
   }
-  
-  a {
-    text-decoration: none;
-    color: inherit;
+  100% {
+    box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
   }
-  
-  /* Login Page Styles */
-  .login-container {
+}
+
+.alert-badge {
+  display: block;
+  font-size: 0.75rem;
+  color: #ef4444;
+  font-weight: bold;
+  margin-top: 0.25rem;
+}
+
+.station-spacer {
+  width: 10rem;
+  margin-left: 1rem;
+}
+
+.connector {
+  position: absolute;
+  width: 0.5rem;
+  height: 4rem;
+  background-color: #ef4444;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+}
+
+/* Remova estas classes não utilizadas */
+
+.maintenance-button-container {
+  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  background-color: #042841;
+  border-top: 1px solid #1f4971;
+}
+
+.maintenance-button {
+  background-color: #083859;
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 500;
+  padding: 1rem 3rem;
+  border-radius: 0.375rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.maintenance-button:hover {
+  background-color: #0a4a75;
+}
+
+/* Estilos do Modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 50;
+}
+
+.modal {
+  background-color: #f8f9fa;
+  border-radius: 0.5rem;
+  width: 100%;
+  max-width: 28rem;
+  padding: 1.5rem;
+  position: relative;
+}
+
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  color: #6b7280;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.modal-close:hover {
+  color: #111827;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-label {
+  display: block;
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.form-select {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #d1d1d1;
+  border: none;
+  border-radius: 0.25rem;
+}
+
+.form-textarea {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #d1d1d1;
+  border: none;
+  border-radius: 0.25rem;
+  resize: vertical;
+  min-height: 6rem;
+}
+
+.form-select-small {
+  width: 10rem;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+
+.btn-blue {
+  background-color: #4285f4;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem 2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-blue:hover {
+  background-color: #3367d6;
+}
+
+/* Estilos da Página de Histórico */
+.historico-content {
+  background-color: #042841;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+/* Adicione estes estilos ao arquivo CSS existente */
+
+/* Cabeçalho da página de histórico com pesquisa */
+.historico-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+/* Estilos para o container da barra de pesquisa */
+.search-container {
+  position: relative;
+  width: 250px;
+  height: 40px;
+  background-color: #e5e7eb;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+}
+
+/* Ícone de pesquisa */
+.search-icon {
+  color: #6b7280;
+  margin-right: 8px;
+}
+
+/* Campo de entrada da pesquisa */
+.search-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  width: 100%;
+  font-size: 14px;
+  color: #374151;
+}
+
+/* Estilo do placeholder */
+.search-input::placeholder {
+  color: #6b7280;
+}
+
+/* Ajustes responsivos */
+@media screen and (max-width: 768px) {
+  .historico-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .search-container {
+    width: 100%;
+  }
+}
+
+.historico-container {
+  background-color: white;
+  border-radius: 0.25rem;
+  padding: 1.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.historico-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.table-container {
+  overflow-x: auto;
+  flex: 1;
+}
+
+.maintenance-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.maintenance-table th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid #e5e7eb;
+  font-weight: 600;
+  color: #333;
+}
+
+.maintenance-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  color: #333;
+}
+
+.maintenance-table tr:last-child td {
+  border-bottom: none;
+}
+
+.delete-button {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.delete-button:hover {
+  background-color: #dc2626;
+}
+
+/* Adicione isso ao arquivo CSS existente */
+
+.empty-state {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  color: #6b7280;
+  text-align: center;
+  padding: 0 2rem;
+}
+
+.form-select.form-select-small {
+  width: 10rem;
+}
+
+/* Adicione estilos para o campo de entrada */
+input.form-select {
+  background-color: #d1d1d1;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+/* ===== ESTILOS RESPONSIVOS ===== */
+
+/* Laptop (1366 x 768) */
+@media screen and (max-width: 1366px) {
+  /* Página de Login */
+  .brand-container {
     display: flex;
-    height: 100vh;
+    width: 50%;
   }
-  
+
+  .brand-logo h2 {
+    font-size: 3.25rem;
+  }
+
+  .welcome-text h3 {
+    font-size: 2rem;
+  }
+
+  /* Dashboard */
+  .welcome-box {
+    max-width: 28rem;
+    margin-top: 4rem;
+  }
+
+  .action-buttons {
+    left: 35%;
+    bottom: 40%; ;
+  }
+
+  .action-button {
+    padding: 1rem 2.5rem;
+    font-size: 1.125rem;
+  }
+
+  /* Páginas de Linha */
+  .stations-container {
+    min-height: 1000px;
+  }
+
+  .station {
+    margin: 0.75rem 0;
+  }
+}
+
+/* Tablet (834 x 1194) */
+@media screen and (max-width: 834px) {
+  /* Página de Login */
+  .login-container {
+    flex-direction: column-reverse;
+  }
+
   .login-form-container {
     width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
+    padding: 1.5rem;
   }
-  
-  .login-form {
+
+  .brand-container {
     width: 100%;
-    max-width: 28rem;
+    padding: 2rem 1rem;
+    min-height: 40vh;
   }
-  
-  .login-form h1 {
-    color: #042841;
-    font-size: 2.25rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-  }
-  
-  .login-form p {
-    color: #000000;
+
+  .brand-logo {
     margin-bottom: 2rem;
   }
-  
-  .input-group {
-    position: relative;
-    margin-bottom: 1.5rem;
-  }
-  
-  .input-icon {
-    position: absolute;
-    left: 0.75rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: #6b7280;
-    pointer-events: none;
-  }
-  
-  .input-field {
-    background-color: rgba(209, 209, 209, 0.2);
-    border: 1px solid #d1d1d1;
-    color: #111827;
-    font-size: 0.875rem;
-    border-radius: 0.5rem;
-    width: 100%;
-    padding: 0.75rem 0.75rem 0.75rem 2.5rem;
-  }
-  
-  .forgot-password {
-    text-align: center;
-    margin-bottom: 1.5rem;
-  }
-  
-  .forgot-password a {
-    color: #0c5c62;
-  }
-  
-  .forgot-password a:hover {
-    text-decoration: underline;
-  }
-  
-  .btn-primary {
-    width: 100%;
-    background-color: #083859;
-    color: white;
-    font-weight: 500;
-    border-radius: 9999px;
-    padding: 0.75rem 1rem;
-    font-size: 1rem;
-    text-align: center;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .btn-primary:hover {
-    background-color: #042841;
-  }
-  
-  .brand-container {
-    display: none;
-    background-color: #042841;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 2rem;
-    color: white;
-  }
-  
-  .brand-logo {
-    margin-bottom: 4rem;
-    text-align: center;
-  }
-  
+
   .brand-logo h2 {
-    font-size: 3.75rem;
-    font-weight: 700;
+    font-size: 2.75rem;
   }
-  
-  .blue-text {
-    color: #3b82f6;
-  }
-  
-  .gray-text {
-    color: #d1d1d1;
-  }
-  
-  .welcome-text {
-    text-align: center;
-    max-width: 28rem;
-  }
-  
+
   .welcome-text h3 {
-    font-size: 2.25rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-  }
-  
-  .welcome-text p {
-    font-size: 1.25rem;
-  }
-  
-  /* Dashboard Styles */
-  .app-container {
-    display: flex;
-    height: 100vh;
-  }
-  
-  .sidebar {
-    width: 15rem;
-    background-color: white;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .sidebar-logo {
-    padding: 1rem;
-    border-bottom: 1px solid #f3f4f6;
-  }
-  
-  .sidebar-logo .logo-text {
-    font-size: 1.875rem;
-    font-weight: 700;
-  }
-  
-  .nav-menu {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .nav-item {
-    padding: 1rem;
-    text-align: left;
-    font-size: 1.125rem;
-    font-weight: 500;
-    color: #6b7280;
-  }
-  
-  .nav-item:hover {
-    background-color: #f3f4f6;
-  }
-  
-  .nav-item.active {
-    background-color: #042841;
-    color: white;
-  }
-  
-  .nav-item-with-icon {
-    display: flex;
-    align-items: center;
-  }
-  
-  .status-dot {
-    width: 1rem;
-    height: 1rem;
-    border-radius: 50%;
-    margin-right: 0.75rem;
-  }
-  
-  .status-dot.green {
-    background-color: #9ca3af; /* Changed from #4ade80 to match the gray line in Linha 8 */
-  }
-  
-  .status-dot.teal {
-    background-color: #2dd4bf; /* New class for teal dots in Linha 9 */
-  }
-  
-  .status-dot.red {
-    background-color: #9ca3af; /* Keeping this for reference but we'll replace its usage */
-  }
-  
-  .sidebar-footer {
-    border-top: 1px solid #f3f4f6;
-  }
-  
-  .footer-item {
-    padding: 1rem;
-    display: flex;
-    align-items: center;
-    color: #6b7280;
-  }
-  
-  .footer-item:hover {
-    background-color: #f3f4f6;
-  }
-  
-  .footer-icon {
-    margin-right: 0.75rem;
-  }
-  
-  .main-content {
-    flex: 1;
-    background-color: #042841;
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .welcome-box {
-    max-width: 32rem;
-    margin: 6rem auto 0;
-    background-color: #083859;
-    color: white;
-    padding: 2rem;
-    border-radius: 0.125rem;
-  }
-  
-  .welcome-box h1 {
-    font-size: 1.875rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-    text-align: center;
-  }
-  
-  .welcome-box p {
-    font-size: 1.25rem;
-    text-align: center;
-  }
-  
-  .action-buttons {
-    position: absolute;
-    z-index: 10;
-    left: 38%;
-    bottom: 53%;
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-  }
-  
-  .action-button {
-    background-color: #083859;
-    color: white;
-    font-size: 1.25rem;
-    font-weight: 500;
-    padding: 1rem 3rem;
-    border-radius: 0.375rem;
-    transition: background-color 0.3s;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .action-button:hover {
-    background-color: #0a4a75;
-  }
-  
-  .train-container {
-    position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 66.666667%;
-    height: 66.666667%;
-  }
-  
-  .train-bg-white {
-    position: absolute;
-    inset: 0;
-    background-color: white;
-    border-top-left-radius: 100%;
-  }
-  
-  .train-bg-blue {
-    position: absolute;
-    inset: 0;
-    background-color: #3b82f6;
-    border-top-left-radius: 100%;
-    transform: scale(0.95);
-    transform-origin: bottom right;
-  }
-  
-  .welcome-overlay {
-    position: absolute;
-    top: 25%;
-    left: 25%;
-    z-index: 20;
-  }
-  
-  .welcome-overlay h2 {
-    font-size: 2.25rem;
-    font-weight: 700;
-    color: white;
-  }
-  
-  .train-image {
-    position: absolute;
-    bottom: 0;
-    right: -9%;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    transform: translate(1rem, 1rem);
-  }
-  
-  /* Line Pages Styles */
-  .linha-content {
-    display: flex;
-    flex-direction: column;
-    height: 210%;
-  }
-  
-  .train-line-container {
-    flex: 1;
-    overflow-y: auto;
-    position: relative;
-    padding: 2rem;
-  }
-  
-  .vertical-line {
-    position: absolute;
-    left: 50%;
-    top: 0;
-    bottom: 0;
-    width: 1rem;
-    transform: translateX(-50%);
-    border-radius: 9999px;
-    z-index: 5;
-  }
-  
-  .vertical-line.gray {
-    background-color: #9ca3af;
-  }
-  
-  .vertical-line.teal {
-    background-color: #2dd4bf;
-  }
-  
-  .stations-container {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-height: 1200px;
-    padding: 2rem 0;
-    z-index: 10;
-    margin: 0 auto;
-  }
-  
-  .station {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 1rem 0;
-    position: relative;
-    width: 100%;
-  }
-  
-  .station-name {
-    color: white;
-    font-size: 0.875rem;
-    text-align: right;
-    width: 10rem;
-    margin-right: 1rem;
-  }
-  
-  .station-id {
-    display: block;
-    font-size: 0.75rem;
-    color: #d1d1d1;
-    margin-bottom: 0.25rem;
-  }
-  
-  .station-dot {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
-    background-color: #d1d1d1;
-    position: relative;
-    z-index: 10;
-  }
-  
-  .station-dot.connected {
-    background-color: #ef4444;
-  }
-  
-  /* Add these new classes for the teal connected stations in Linha 9 */
-  /* Remove these unused classes */
-  
-  /* Add these styles for alerted stations */
-  .station-dot.alerted {
-    background-color: #ef4444; /* Red color for alerts */
-    animation: pulse 2s infinite;
-  }
-  
-  @keyframes pulse {
-    0% {
-      box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
-    }
-    70% {
-      box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
-    }
-    100% {
-      box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
-    }
-  }
-  
-  .alert-badge {
-    display: block;
-    font-size: 0.75rem;
-    color: #ef4444;
-    font-weight: bold;
-    margin-top: 0.25rem;
-  }
-  
-  .station-spacer {
-    width: 10rem;
-    margin-left: 1rem;
-  }
-  
-  .connector {
-    position: absolute;
-    width: 0.5rem;
-    height: 4rem;
-    background-color: #ef4444;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 5;
-  }
-  
-  /* Remove these unused classes */
-  
-  .maintenance-button-container {
-    padding: 2rem;
-    display: flex;
-    justify-content: center;
-    background-color: #042841;
-    border-top: 1px solid #1f4971;
-  }
-  
-  .maintenance-button {
-    background-color: #083859;
-    color: white;
-    font-size: 1.25rem;
-    font-weight: 500;
-    padding: 1rem 3rem;
-    border-radius: 0.375rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .maintenance-button:hover {
-    background-color: #0a4a75;
-  }
-  
-  /* Modal Styles */
-  .modal-overlay {
-    position: fixed;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 50;
-  }
-  
-  .modal {
-    background-color: #f8f9fa;
-    border-radius: 0.5rem;
-    width: 100%;
-    max-width: 28rem;
-    padding: 1.5rem;
-    position: relative;
-  }
-  
-  .modal-close {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    color: #6b7280;
-    background: none;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .modal-close:hover {
-    color: #111827;
-  }
-  
-  .modal-title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 1.5rem;
-  }
-  
-  .form-group {
+    font-size: 1.75rem;
     margin-bottom: 1rem;
   }
-  
-  .form-label {
-    display: block;
-    font-size: 1.25rem;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
+
+  .welcome-text p {
+    font-size: 1.125rem;
   }
-  
-  .form-select {
-    width: 100%;
-    padding: 0.5rem;
-    background-color: #d1d1d1;
-    border: none;
-    border-radius: 0.25rem;
+
+  /* Dashboard */
+  .sidebar {
+    width: 12rem;
   }
-  
-  .form-textarea {
-    width: 100%;
-    padding: 0.5rem;
-    background-color: #d1d1d1;
-    border: none;
-    border-radius: 0.25rem;
-    resize: vertical;
-    min-height: 6rem;
+
+  .sidebar-logo .logo-text {
+    font-size: 1.5rem;
   }
-  
-  .form-select-small {
-    width: 10rem;
-  }
-  
-  .form-actions {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 1.5rem;
-  }
-  
-  .btn-blue {
-    background-color: #4285f4;
-    color: white;
-    border: none;
-    border-radius: 0.25rem;
-    padding: 0.5rem 2rem;
-    font-size: 1rem;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .btn-blue:hover {
-    background-color: #3367d6;
-  }
-  
-  /* Historico Page Styles */
-  .historico-content {
-    background-color: #042841;
-    padding: 2rem;
-    overflow-y: auto;
-  }
-  
-  .historico-container {
-    background-color: white;
-    border-radius: 0.25rem;
-    padding: 1.5rem;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .historico-title {
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: #333;
-    margin-bottom: 1.5rem;
-  }
-  
-  .table-container {
-    overflow-x: auto;
-    flex: 1;
-  }
-  
-  .maintenance-table {
-    width: 100%;
-    border-collapse: collapse;
-  }
-  
-  .maintenance-table th {
-    text-align: left;
-    padding: 0.75rem 1rem;
-    border-bottom: 2px solid #e5e7eb;
-    font-weight: 600;
-    color: #333;
-  }
-  
-  .maintenance-table td {
-    padding: 1rem;
-    border-bottom: 1px solid #e5e7eb;
-    color: #333;
-  }
-  
-  .maintenance-table tr:last-child td {
-    border-bottom: none;
-  }
-  
-  .delete-button {
-    background-color: #ef4444;
-    color: white;
-    border: none;
-    border-radius: 0.25rem;
-    padding: 0.5rem 1rem;
-    font-size: 0.875rem;
-    cursor: pointer;
-    transition: background-color 0.2s;
-  }
-  
-  .delete-button:hover {
-    background-color: #dc2626;
-  }
-  
-  /* Add this to the existing CSS file */
-  
-  .empty-state {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 200px;
-    color: #6b7280;
-    text-align: center;
-    padding: 0 2rem;
-  }
-  
-  .form-select.form-select-small {
-    width: 10rem;
-  }
-  
-  /* Add styles for the input field */
-  input.form-select {
-    background-color: #d1d1d1;
-    border: none;
-    border-radius: 0.25rem;
-    padding: 0.5rem;
+
+  .nav-item {
+    padding: 0.875rem;
     font-size: 1rem;
   }
-  
-  /* ===== RESPONSIVE STYLES ===== */
-  
-  /* Laptop (1366 x 768) */
-  @media screen and (max-width: 1366px) {
-    /* Login Page */
-    .brand-container {
-      display: flex;
-      width: 50%;
-    }
-  
-    .brand-logo h2 {
-      font-size: 3.25rem;
-    }
-  
-    .welcome-text h3 {
-      font-size: 2rem;
-    }
-  
-    /* Dashboard */
-    .welcome-box {
-      max-width: 28rem;
-      margin-top: 4rem;
-    }
-  
-    .action-buttons {
-      left: 20%;
-    }
-  
-    .action-button {
-      padding: 0.875rem 2.5rem;
-      font-size: 1.125rem;
-    }
-  
-    /* Line Pages */
-    .stations-container {
-      min-height: 1000px;
-    }
-  
-    .station {
-      margin: 0.75rem 0;
-    }
-  }
-  
-  /* Tablet (834 x 1194) */
-  @media screen and (max-width: 834px) {
-    /* Login Page */
-    .login-container {
-      flex-direction: column-reverse;
-    }
-  
-    .login-form-container {
-      width: 100%;
-      padding: 1.5rem;
-    }
-  
-    .brand-container {
-      width: 100%;
-      padding: 2rem 1rem;
-      min-height: 40vh;
-    }
-  
-    .brand-logo {
-      margin-bottom: 2rem;
-    }
-  
-    .brand-logo h2 {
-      font-size: 2.75rem;
-    }
-  
-    .welcome-text h3 {
-      font-size: 1.75rem;
-      margin-bottom: 1rem;
-    }
-  
-    .welcome-text p {
-      font-size: 1.125rem;
-    }
-  
-    /* Dashboard */
-    .sidebar {
-      width: 12rem;
-    }
-  
-    .sidebar-logo .logo-text {
-      font-size: 1.5rem;
-    }
-  
-    .nav-item {
-      padding: 0.875rem;
-      font-size: 1rem;
-    }
-  
-    .welcome-box {
-      max-width: 90%;
-      margin-top: 2rem;
-      padding: 1.5rem;
-    }
-  
-    .welcome-box h1 {
-      font-size: 1.5rem;
-    }
-  
-    .welcome-box p {
-      font-size: 1rem;
-    }
-  
-    .action-buttons {
-      position: relative;
-      left: auto;
-      bottom: auto;
-      margin: 2rem auto;
-      z-index: 10;
-    }
-  
-    .action-button {
-      padding: 0.75rem 2rem;
-      font-size: 1rem;
-    }
-  
-    .train-container {
-      width: 100%;
-      height: 50%;
-    }
-  
-    /* Line Pages */
-    .train-line-container {
-      padding: 1rem;
-    }
-  
-    .station-name {
-      width: 8rem;
-      font-size: 0.75rem;
-    }
-  
-    .station-spacer {
-      width: 8rem;
-    }
-  
-    .station-dot {
-      width: 1.5rem;
-      height: 1.5rem;
-    }
-  
-    .maintenance-button {
-      font-size: 1rem;
-      padding: 0.75rem 2rem;
-    }
-  
-    /* Modal */
-    .modal {
-      max-width: 90%;
-      padding: 1.25rem;
-    }
-  
-    .form-label {
-      font-size: 1rem;
-    }
-  }
-  
-  /* Mobile (700 x 1186) */
-  @media screen and (max-width: 700px) {
-    /* Login Page */
-    .login-form h1 {
-      font-size: 1.75rem;
-    }
-  
-    .brand-container {
-      min-height: 30vh;
-    }
-  
-    .brand-logo h2 {
-      font-size: 2.25rem;
-    }
-  
-    .welcome-text h3 {
-      font-size: 1.5rem;
-    }
-  
-    /* Dashboard */
-    .app-container {
-      flex-direction: column;
-    }
-  
-    .sidebar {
-      width: 100%;
-      height: auto;
-      flex-direction: column;
-    }
-  
-    .sidebar-logo {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-  
-    .nav-menu {
-      flex-direction: row;
-      overflow-x: auto;
-      padding: 0.5rem;
-    }
-  
-    .nav-item {
-      white-space: nowrap;
-      padding: 0.75rem;
-      font-size: 0.875rem;
-    }
-  
-    .sidebar-footer {
-      display: flex;
-      justify-content: space-around;
-    }
-  
-    .main-content {
-      height: calc(100vh - 150px);
-    }
-  
-    .welcome-box {
-      margin-top: 1.5rem;
-      padding: 1.25rem;
-    }
-  
-    .welcome-box h1 {
-      font-size: 1.25rem;
-      margin-bottom: 1rem;
-    }
-  
-    .welcome-box p {
-      font-size: 0.875rem;
-    }
-  
-    .action-buttons {
-      flex-direction: column;
-      gap: 1rem;
-      margin: 1.5rem auto;
-    }
-  
-    .train-container {
-      display: none;
-    }
-  
-    /* Line Pages */
-    .linha-content {
-      height: calc(100vh - 150px);
-    }
-  
-    .station-name {
-      width: 6rem;
-      font-size: 0.75rem;
-    }
-  
-    .station-spacer {
-      width: 6rem;
-    }
-  
-    .station-dot {
-      width: 1.25rem;
-      height: 1.25rem;
-    }
-  
-    .maintenance-button-container {
-      padding: 1rem;
-    }
-  
-    .maintenance-button {
-      font-size: 0.875rem;
-      padding: 0.75rem 1.5rem;
-    }
-  
-    /* Modal */
-    .modal {
-      padding: 1rem;
-    }
-  
-    .modal-title {
-      font-size: 1.25rem;
-      margin-bottom: 1rem;
-    }
-  
-    .form-label {
-      font-size: 0.875rem;
-    }
-  
-    .form-select-small {
-      width: 8rem;
-    }
-  
-    .btn-blue {
-      padding: 0.5rem 1.5rem;
-      font-size: 0.875rem;
-    }
-  }
-  
-  /* Responsive adjustments for the table */
-  @media screen and (max-width: 1024px) {
-    .historico-content {
-      padding: 1rem;
-    }
-  
-    .maintenance-table th,
-    .maintenance-table td {
-      padding: 0.75rem 0.5rem;
-      font-size: 0.875rem;
-    }
-  
-    .delete-button {
-      padding: 0.4rem 0.75rem;
-      font-size: 0.75rem;
-    }
-  }
-  
-  @media screen and (max-width: 768px) {
-    .historico-container {
-      padding: 1rem;
-    }
-  
-    .historico-title {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-    }
-  
-    .maintenance-table {
-      font-size: 0.75rem;
-    }
-  }
-  
-  @media screen and (max-width: 640px) {
-    .table-container {
-      overflow-x: scroll;
-    }
-  
-    .maintenance-table {
-      min-width: 600px;
-    }
-  }
-  
-  /* Alertas Page Styles */
-  .alertas-content {
-    background-color: #042841;
-    padding: 2rem;
-    overflow-y: auto;
-  }
-  
-  .alertas-container {
-    background-color: white;
-    border-radius: 0.25rem;
+
+  .welcome-box {
+    max-width: 90%;
+    margin-top: 2rem;
     padding: 1.5rem;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
   }
-  
-  .alertas-title {
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: #333;
-    margin-bottom: 1.5rem;
+
+  .welcome-box h1 {
+    font-size: 1.5rem;
   }
-  
-  .alertas-table {
+
+  .welcome-box p {
+    font-size: 1rem;
+  }
+
+  .action-buttons {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    margin: 2rem auto;
+    z-index: 10;
+  }
+
+  .action-button {
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+  }
+
+  .train-container {
     width: 100%;
-    border-collapse: collapse;
+    height: 50%;
   }
-  
-  .alertas-table th {
-    text-align: left;
-    padding: 0.75rem 1rem;
-    border-bottom: 2px solid #e5e7eb;
-    font-weight: 600;
-    color: #333;
-  }
-  
-  .alertas-table td {
+
+  /* Páginas de Linha */
+  .train-line-container {
     padding: 1rem;
-    border-bottom: 1px solid #e5e7eb;
-    color: #333;
   }
-  
-  .alertas-table tr:last-child td {
-    border-bottom: none;
-  }
-  
-  .complete-button {
-    background-color: #22c55e;
-    color: white;
-    border: none;
-    border-radius: 0.25rem;
-    padding: 0.5rem 1rem;
-    font-size: 0.875rem;
-    cursor: pointer;
-    transition: background-color 0.2s;
-  }
-  
-  .complete-button:hover {
-    background-color: #16a34a;
-  }
-  
-  /* Responsive adjustments for the alertas table */
-  @media screen and (max-width: 1024px) {
-    .alertas-content {
-      padding: 1rem;
-    }
-  
-    .alertas-table th,
-    .alertas-table td {
-      padding: 0.75rem 0.5rem;
-      font-size: 0.875rem;
-    }
-  
-    .complete-button {
-      padding: 0.4rem 0.75rem;
-      font-size: 0.75rem;
-    }
-  }
-  
-  @media screen and (max-width: 768px) {
-    .alertas-container {
-      padding: 1rem;
-    }
-  
-    .alertas-title {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-    }
-  
-    .alertas-table {
-      font-size: 0.75rem;
-    }
-  }
-  
-  @media screen and (max-width: 640px) {
-    .alertas-table {
-      min-width: 600px;
-    }
-  }
-  
-  /* Add these styles to the existing CSS file */
-  
-  /* Status badge styles for the history page */
-  .status-badge {
-    display: inline-block;
-    padding: 0.25rem 0.5rem;
-    border-radius: 9999px;
+
+  .station-name {
+    width: 8rem;
     font-size: 0.75rem;
-    font-weight: 500;
   }
-  
-  .status-badge.active {
-    background-color: #fef3c7;
-    color: #92400e;
+
+  .station-spacer {
+    width: 8rem;
   }
-  
-  .status-badge.completed {
-    background-color: #d1fae5;
-    color: #065f46;
+
+  .station-dot {
+    width: 1.5rem;
+    height: 1.5rem;
   }
-  
-  /* Add this new animation for flashing status dots */
-  @keyframes flash-red {
-    0%,
-    100% {
-      background-color: #ef4444;
-      box-shadow: 0 0 5px #ef4444;
-    }
-    50% {
-      background-color: #b91c1c;
-      box-shadow: 0 0 10px #ef4444;
-    }
+
+  .maintenance-button {
+    font-size: 1rem;
+    padding: 0.75rem 2rem;
   }
-  
-  /* Add this new class for flashing status dots */
-  .status-dot.alert-active {
+
+  /* Modal */
+  .modal {
+    max-width: 90%;
+    padding: 1.25rem;
+  }
+
+  .form-label {
+    font-size: 1rem;
+  }
+}
+
+/* Mobile (700 x 1186) */
+@media screen and (max-width: 700px) {
+  /* Página de Login */
+  .login-form h1 {
+    font-size: 1.75rem;
+  }
+
+  .brand-container {
+    min-height: 30vh;
+  }
+
+  .brand-logo h2 {
+    font-size: 2.25rem;
+  }
+
+  .welcome-text h3 {
+    font-size: 1.5rem;
+  }
+
+  /* Dashboard */
+  .app-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+  }
+
+  .sidebar-logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-menu {
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 0.5rem;
+  }
+
+  .nav-item {
+    white-space: nowrap;
+    padding: 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .sidebar-footer {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .main-content {
+    height: calc(100vh - 150px);
+  }
+
+  .welcome-box {
+    margin-top: 1.5rem;
+    padding: 1.25rem;
+  }
+
+  .welcome-box h1 {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .welcome-box p {
+    font-size: 0.875rem;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1.5rem auto;
+  }
+
+  .train-container {
+    display: none;
+  }
+
+  /* Páginas de Linha */
+  .linha-content {
+    height: calc(100vh - 150px);
+  }
+
+  .station-name {
+    width: 6rem;
+    font-size: 0.75rem;
+  }
+
+  .station-spacer {
+    width: 6rem;
+  }
+
+  .station-dot {
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .maintenance-button-container {
+    padding: 1rem;
+  }
+
+  .maintenance-button {
+    font-size: 0.875rem;
+    padding: 0.75rem 1.5rem;
+  }
+
+  /* Modal */
+  .modal {
+    padding: 1rem;
+  }
+
+  .modal-title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .form-label {
+    font-size: 0.875rem;
+  }
+
+  .form-select-small {
+    width: 8rem;
+  }
+
+  .btn-blue {
+    padding: 0.5rem 1.5rem;
+    font-size: 0.875rem;
+  }
+}
+
+/* Ajustes responsivos para a tabela */
+@media screen and (max-width: 1024px) {
+  .historico-content {
+    padding: 1rem;
+  }
+
+  .maintenance-table th,
+  .maintenance-table td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  .delete-button {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .historico-container {
+    padding: 1rem;
+  }
+
+  .historico-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .maintenance-table {
+    font-size: 0.75rem;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .table-container {
+    overflow-x: scroll;
+  }
+
+  .maintenance-table {
+    min-width: 600px;
+  }
+}
+
+/* Estilos da Página de Alertas */
+.alertas-content {
+  background-color: #042841;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.alertas-container {
+  background-color: white;
+  border-radius: 0.25rem;
+  padding: 1.5rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.alertas-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+.alertas-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.alertas-table th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid #e5e7eb;
+  font-weight: 600;
+  color: #333;
+}
+
+.alertas-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  color: #333;
+}
+
+.alertas-table tr:last-child td {
+  border-bottom: none;
+}
+
+.complete-button {
+  background-color: #22c55e;
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.complete-button:hover {
+  background-color: #16a34a;
+}
+
+/* Ajustes responsivos para a tabela de alertas */
+@media screen and (max-width: 1024px) {
+  .alertas-content {
+    padding: 1rem;
+  }
+
+  .alertas-table th,
+  .alertas-table td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  .complete-button {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .alertas-container {
+    padding: 1rem;
+  }
+
+  .alertas-title {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .alertas-table {
+    font-size: 0.75rem;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .alertas-table {
+    min-width: 600px;
+  }
+}
+
+/* Adicione estes estilos ao arquivo CSS existente */
+
+/* Estilos de badge de status para a página de histórico */
+.status-badge {
+  display: inline-block;
+  padding: 0.25rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.status-badge.active {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.status-badge.completed {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+/* Adicione esta nova animação para pontos de status piscando */
+@keyframes flash-red {
+  0%,
+  100% {
     background-color: #ef4444;
-    animation: flash-red 1.5s infinite;
+    box-shadow: 0 0 5px #ef4444;
   }
-  
+  50% {
+    background-color: #b91c1c;
+    box-shadow: 0 0 10px #ef4444;
+  }
+}
+
+/* Adicione esta nova classe para pontos de status piscando */
+.status-dot.alert-active {
+  background-color: #ef4444;
+  animation: flash-red 1.5s infinite;
+}

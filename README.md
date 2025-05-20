@@ -4,6 +4,7 @@ para a ultilização correta do Projeto no terminal ultilize o comando para que 
 ```bash
 npm install lucide-react
 npm run dev
+npm install date-fns
 
 ```
 

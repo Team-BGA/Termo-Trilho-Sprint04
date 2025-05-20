@@ -1,13 +1,10 @@
 "use client"
 
-
 import Image from "next/image"
 import Link from "next/link"
 import SidebarNav from "@/components/sidebar-nav"
 
 export default function Dashboard() {
-  
-
   return (
     <div className="app-container">
       {/* Left Sidebar */}

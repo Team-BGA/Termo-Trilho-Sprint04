@@ -39,7 +39,7 @@ export function MaintenanceProvider({ children }: { children: ReactNode }) {
     if (alertToRemove && alertToRemove.stationId) {
       setAlertedStations((prev) => {
         const newAlertedStations = { ...prev }
-        delete newAlertedStations[${alertToRemove.line}-${alertToRemove.stationId}]
+        delete newAlertedStations[`${alertToRemove.line}-${alertToRemove.stationId}`]
         return newAlertedStations
       })
     }
@@ -58,7 +58,7 @@ export function MaintenanceProvider({ children }: { children: ReactNode }) {
       // Remove the station from alertedStations to remove the red circle
       setAlertedStations((prev) => {
         const newAlertedStations = { ...prev }
-        delete newAlertedStations[${alertToComplete.line}-${alertToComplete.stationId}]
+        delete newAlertedStations[`${alertToComplete.line}-${alertToComplete.stationId}`]
         return newAlertedStations
       })
     }
@@ -140,9 +140,9 @@ export function MaintenanceProvider({ children }: { children: ReactNode }) {
 
     // Create the maintenance request
     const newAlert: MaintenanceRequest = {
-      id: alert-${Date.now()},
+      id: `alert-${Date.now()}`,
       location: stationName,
-      description: Alerta automático gerado para a estação ${stationName},
+      description: `Alerta automático gerado para a estação ${stationName}`,
       alertLevel: alertLevel.toString(),
       line,
       date: new Date(),
@@ -156,10 +156,10 @@ export function MaintenanceProvider({ children }: { children: ReactNode }) {
     // Update the alerted stations state
     setAlertedStations((prev) => ({
       ...prev,
-      [${line}-${stationId}]: alertLevel,
+      [`${line}-${stationId}`]: alertLevel,
     }))
 
-    console.log(Random alert generated for ${line}, Station ID: ${stationId}, Alert Level: ${alertLevel})
+    console.log(`Random alert generated for ${line}, Station ID: ${stationId}, Alert Level: ${alertLevel}`)
   }
 
   return (
