@@ -26,6 +26,7 @@ export interface MaintenanceRequest {
   date: Date
   railId: string
   stationId?: number
+  apiId?: number // Adicionado para compatibilidade com a API
 }
 
 export default function MaintenanceModal({

@@ -3,14 +3,20 @@ import { useMaintenanceContext } from "@/context/maintenance-context"
 import { format } from "date-fns"
 import { ptBR } from "date-fns/locale"
 import SidebarNav from "@/components/sidebar-nav"
-import { useState } from "react"
-import { Search } from "lucide-react"
+import { useState, useEffect } from "react"
+import { Search, RefreshCw } from "lucide-react"
 
 export default function Historico() {
   // Usando o contexto de manutenção para acessar os dados
-  const { maintenanceRequests, removeMaintenanceRequest, completedAlerts } = useMaintenanceContext()
+  const { maintenanceRequests, removeMaintenanceRequest, completedAlerts, isLoading, refreshAlertas } =
+    useMaintenanceContext()
   // Estado para armazenar a consulta de pesquisa
   const [searchQuery, setSearchQuery] = useState("")
+
+  // Atualiza os alertas quando a página é carregada
+  useEffect(() => {
+    refreshAlertas()
+  }, [])
 
   // Função para formatar a data no padrão brasileiro
   const formatDate = (date: Date) => {
@@ -20,6 +26,11 @@ export default function Historico() {
   // Função para lidar com a exclusão de uma solicitação de manutenção
   const handleDelete = (id: string) => {
     removeMaintenanceRequest(id)
+  }
+
+  // Função para atualizar os dados
+  const handleRefresh = async () => {
+    await refreshAlertas()
   }
 
   // Filtra as solicitações de manutenção com base na consulta de pesquisa
@@ -42,21 +53,46 @@ export default function Historico() {
           <div className="historico-header">
             <h1 className="historico-title">Últimas Manutenções</h1>
 
-            {/* Barra de pesquisa */}
-            <div className="search-container">
-              <Search className="search-icon" size={18} />
-              <input
-                type="text"
-                placeholder="Buscar por id"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="search-input"
-              />
+            <div style={{ display: "flex", gap: "1rem", alignItems: "center" }}>
+              {/* Botão de atualizar */}
+              <button
+                onClick={handleRefresh}
+                className="refresh-button"
+                disabled={isLoading}
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                  background: "transparent",
+                  border: "none",
+                  cursor: "pointer",
+                  color: "#333",
+                }}
+              >
+                <RefreshCw size={18} className={isLoading ? "animate-spin" : ""} />
+                {isLoading ? "Atualizando..." : "Atualizar"}
+              </button>
+
+              {/* Barra de pesquisa */}
+              <div className="search-container">
+                <Search className="search-icon" size={18} />
+                <input
+                  type="text"
+                  placeholder="Buscar por id"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="search-input"
+                />
+              </div>
             </div>
           </div>
 
           <div className="table-container">
-            {filteredRequests.length > 0 ? (
+            {isLoading ? (
+              <div className="loading-state" style={{ textAlign: "center", padding: "2rem" }}>
+                <p>Carregando dados...</p>
+              </div>
+            ) : filteredRequests.length > 0 ? (
               <table className="maintenance-table">
                 <thead>
                   <tr>

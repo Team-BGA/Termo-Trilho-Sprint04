@@ -2,6 +2,7 @@
 
 import { createContext, useState, useContext, type ReactNode, useEffect } from "react"
 import type { MaintenanceRequest } from "@/components/maintenace-modal"
+import { alertaService } from "@/services/alert-api"
 
 interface MaintenanceContextType {
   maintenanceRequests: MaintenanceRequest[]
@@ -11,6 +12,8 @@ interface MaintenanceContextType {
   completedAlerts: string[]
   generateRandomAlert: () => void
   markAlertAsCompleted: (id: string) => void
+  isLoading: boolean
+  refreshAlertas: () => Promise<void>
 }
 
 const MaintenanceContext = createContext<MaintenanceContextType | undefined>(undefined)
@@ -19,9 +22,56 @@ export function MaintenanceProvider({ children }: { children: ReactNode }) {
   const [maintenanceRequests, setMaintenanceRequests] = useState<MaintenanceRequest[]>([])
   const [alertedStations, setAlertedStations] = useState<Record<string, number>>({})
   const [completedAlerts, setCompletedAlerts] = useState<string[]>([])
+  const [isLoading, setIsLoading] = useState(false)
 
-  // Generate a random alert when the app loads
+  // Função para carregar alertas da API
+  const carregarAlertasDaAPI = async () => {
+    setIsLoading(true)
+    try {
+      // Busca todos os alertas da API
+      const alertasAPI = await alertaService.buscarTodosAlertas()
+
+      // Converte os alertas da API para o formato usado no contexto
+      const alertasConvertidos = alertasAPI.map((alerta) => alertaService.converterParaMaintenanceRequest(alerta))
+
+      // Atualiza o estado com os alertas da API
+      setMaintenanceRequests((prev) => {
+        // Filtra os alertas locais (que não têm apiId)
+        const alertasLocais = prev.filter((req) => !req.apiId)
+        // Combina os alertas locais com os da API
+        return [...alertasLocais, ...alertasConvertidos]
+      })
+
+      // Atualiza o estado de estações com alerta
+      const novoAlertedStations: Record<string, number> = {}
+      alertasAPI.forEach((alerta) => {
+        if (alerta.estacaoId) {
+          novoAlertedStations[`${alerta.linha}-${alerta.estacaoId}`] = alerta.nivelAlerta
+        }
+      })
+
+      setAlertedStations((prev) => ({
+        ...prev,
+        ...novoAlertedStations,
+      }))
+
+      console.log("Alertas carregados da API:", alertasConvertidos.length)
+    } catch (error) {
+      console.error("Erro ao carregar alertas da API:", error)
+    } finally {
+      setIsLoading(false)
+    }
+  }
+
+  // Função para atualizar os alertas
+  const refreshAlertas = async () => {
+    await carregarAlertasDaAPI()
+  }
+
+  // Carrega os alertas da API quando o componente é montado
   useEffect(() => {
+    carregarAlertasDaAPI()
+    // Ainda mantemos a geração de um alerta aleatório para demonstração
     generateRandomAlert()
   }, [])
 
@@ -30,7 +80,20 @@ export function MaintenanceProvider({ children }: { children: ReactNode }) {
     console.log("New maintenance request added:", request)
   }
 
-  const removeMaintenanceRequest = (id: string) => {
+  const removeMaintenanceRequest = async (id: string) => {
+    // Verifica se é um alerta da API (começa com "api-")
+    if (id.startsWith("api-")) {
+      const apiId = Number.parseInt(id.replace("api-", ""))
+
+      // Tenta excluir o alerta na API
+      const sucesso = await alertaService.excluirAlerta(apiId)
+
+      if (!sucesso) {
+        console.error(`Falha ao excluir alerta com ID ${apiId} na API`)
+        return
+      }
+    }
+
     // Remove from maintenanceRequests
     setMaintenanceRequests((prev) => prev.filter((item) => item.id !== id))
 
@@ -172,6 +235,8 @@ export function MaintenanceProvider({ children }: { children: ReactNode }) {
         completedAlerts,
         generateRandomAlert,
         markAlertAsCompleted,
+        isLoading,
+        refreshAlertas,
       }}
     >
       {children}
