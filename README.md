@@ -7,7 +7,8 @@ npm run dev
 npm install date-fns
 
 ```
-
+## ⚠️ **Video Pitch**
+https://youtu.be/uRdfsLAOMJw
 
 # Projeto Termo-Trilho
 Projeto desenvolvido em React|Next.js
@@ -15,6 +16,7 @@ Projeto desenvolvido em React|Next.js
 <p>➢Amanda Galdino - Rm:560066 
 <br>➢Bruno Cantacini - Rm:560242
 <br>➢Gustavo Gonçalves - Rm:556823
+
 
 # Termo-Trilho
 Sistema Inteligente de Monitorização Térmica para Trilhos Ferroviários
